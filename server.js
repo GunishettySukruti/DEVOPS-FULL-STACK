@@ -1,12 +1,35 @@
-const http = require('http');
+const http = require("http");
+const fs = require("fs");
+const express = require("express");
 
-// Create server
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, this is my Node.js server!');
+const app = express();
+
+app.get("/convert", (req, res) => {
+
+    const celsius = parseFloat(req.query.c);
+
+    const fahrenheit = (celsius * 9/5) + 32;
+
+    fs.readFile("result.html", "utf8", (err, data) => {
+
+        if (err) {
+            res.send("Error reading file");
+        } else {
+
+            let result = data.replace(
+                '<p id="result"></p>',
+                `<p>Temperature in Fahrenheit: ${fahrenheit}</p>`
+            );
+
+            res.send(result);
+        }
+
+    });
+
 });
 
-// Server listens on port 3000
+const server = http.createServer(app);
+
 server.listen(3000, () => {
-    console.log('Server running at http://localhost:3000/');
+    console.log("Server running at http://localhost:3000");
 });
