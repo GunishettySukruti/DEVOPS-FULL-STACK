@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Test</title>
+</head>
+<body>
+
+<h2>Menu</h2>
+
+<button onclick="addToOrder('Veg Biryani', 180)">Add Veg Biryani</button>
+<button onclick="addToOrder('Chicken Biryani', 250)">Add Chicken Biryani</button>
+
+<h3>Your Order</h3>
+<ul id="orderList"></ul>
+
+<h3>Total: ₹<span id="totalAmount">0</span></h3>
+
+<button onclick="clearOrder()">Clear Order</button>
+
+<!-- IMPORTANT: JS linked at the END -->
+<script src="menu.js"></script>
+
+</body>
+</html>

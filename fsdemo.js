@@ -1,5 +1,6 @@
 const fs = require('fs');
 
-fs.writeFileSync('hello.txt', 'Hello, I am learning Node.js');
+// read the file
+const data = fs.readFileSync('hello.txt', 'utf8');
 
-console.log('File created successfully');
+console.log(data);
